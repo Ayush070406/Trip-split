@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Shared Expenses App (Antigravity Split)
 
-## Getting Started
+A shared expenses application built to parse, detect, resolve, and manage shared expenses for Aisha, Rohan, Priya, Meera, Sam, and Dev. It includes a multi-step CSV importer that detects 24 data anomalies and provides interactive resolution UI.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 Tech Stack
+
+- **Frontend**: React (Vite, JavaScript) styled with custom premium Vanilla CSS (Glassmorphism, Dark Mode, responsive layouts).
+- **Backend**: Flask (Python 3.12) with JWT cookie-based authentication.
+- **ORM & Database**: SQLAlchemy ORM connecting to **PostgreSQL** in production, with an out-of-the-box local SQLite fallback for developer convenience.
+- **AI Collaboration**: Built in partnership with Antigravity AI Agent (DeepMind team).
+
+---
+
+## 🛠️ Local Setup Instructions
+
+### Prerequisites
+- **Node.js** (v18+) and **npm**
+- **Python** (v3.12+)
+
+---
+
+### 1. Backend Setup
+
+1. Open a terminal in the root directory.
+2. Create and activate a virtual environment:
+   ```powershell
+   cd backend
+   python -m venv venv
+   .\venv\Scripts\Activate.ps1
+   ```
+3. Install dependencies:
+   ```powershell
+   pip install -r requirements.txt
+   ```
+4. Configure environment variables in `.env` (optional). If not configured, the app will automatically default to SQLite (`sqlite:///expenses.db`) in the root:
+   ```env
+   JWT_SECRET=your_jwt_secret
+   DATABASE_URL=postgresql://user:password@localhost:5432/dbname
+   ```
+5. Run the Flask server:
+   ```powershell
+   # Run from root project directory for relative paths
+   cd ..
+   & backend\venv\Scripts\python backend\app.py
+   ```
+   *The server runs on `http://localhost:5000`.*
+
+---
+
+### 2. Frontend Setup
+
+1. Open a new terminal in the `frontend` folder:
+   ```powershell
+   cd frontend
+   ```
+2. Install npm packages:
+   ```powershell
+   npm install
+   ```
+3. Run the Vite React development server:
+   ```powershell
+   npm run dev
+   ```
+   *The client runs on `http://localhost:5173`.*
+
+---
+
+## 🧪 Running Unit Tests
+
+To run the Python unit tests verifying date parsing, cleaning, mapping, and debt minimization:
+```powershell
+cd backend
+.\venv\Scripts\python tests.py
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 📥 Import Wizard and Resolution Flow
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Register an account and login.
+2. Select or create an expense group.
+3. Click on the **CSV Data Importer** tab.
+4. Drag and drop `expenses_export.csv` into the box, then click **Upload and Check**.
+5. The importer will show all 24 anomalies. Configure the resolution choices (e.g., select which Thalassa dinner or Marina Bites duplicates to keep, enter FX rates for USD items, map spelling aliases).
+6. Click **Save Resolutions**.
+7. The app displays the **Final Import Report** showing what was imported and skipped. You can download this report as a text file.
