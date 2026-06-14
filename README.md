@@ -1,4 +1,4 @@
-# Shared Expenses App (Antigravity Split)
+# Shared Expenses App (Trip Split)
 
 A shared expenses application built to parse, detect, resolve, and manage shared expenses for Aisha, Rohan, Priya, Meera, Sam, and Dev. It includes a multi-step CSV importer that detects 24 data anomalies and provides interactive resolution UI.
 

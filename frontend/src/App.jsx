@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const API_BASE = "http://localhost:5000/api";
+const API_BASE = "http://127.0.0.1:5000/api";
 
 export default function App() {
   // Auth state
@@ -526,7 +526,7 @@ export default function App() {
         <div className="ambient-glow-2"></div>
         <div className="glass-panel" style={{ width: '100%', maxWidth: '440px' }}>
           <h2 style={{ textAlign: 'center', marginBottom: '8px', background: 'linear-gradient(135deg, #818cf8, #22d3ee)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: 800, fontSize: '32px' }}>
-            Antigravity Split
+            Trip Split
           </h2>
           <p style={{ textAlign: 'center', color: 'var(--text-muted)', marginBottom: '24px' }}>
             {authMode === 'login' ? 'Welcome back! Sign in to continue' : 'Create an account to split expenses'}
@@ -601,7 +601,7 @@ export default function App() {
       {/* NAVBAR */}
       <header className="navbar">
         <a href="#" className="navbar-brand">
-          <span>🌌</span> Antigravity Split
+          <span>🌌</span> Trip Split
         </a>
         
         {activeGroupId && activeGroup && (
